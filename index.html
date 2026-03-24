@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kho Kiến Thức - vietndj</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen p-6 md:p-12">
+
+    <div class="max-w-3xl mx-auto bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+        <div class="text-center mb-10 border-b pb-6">
+            <h1 class="text-3xl md:text-4xl font-extrabold text-gray-800 mb-2">📚 Kho Kiến Thức AI & Tư Duy</h1>
+            <p class="text-gray-500">Nơi lưu trữ và tổng hợp các bài viết, hướng dẫn của vietndj</p>
+        </div>
+
+        <div id="danh-sach-bai-viet" class="flex flex-col gap-4">
+            <p class="text-gray-500 italic text-center animate-pulse">⏳ Đang tự động quét bài viết...</p>
+        </div>
+    </div>
+
+    <script>
+        // Khai báo tên kho GitHub của bạn
+        const repo = 'vietndj/knowledge'; 
+        const apiUrl = `https://api.github.com/repos/${repo}/contents/`;
+
+        // Gọi API của GitHub để lấy danh sách file
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                const khungChua = document.getElementById('danh-sach-bai-viet');
+                khungChua.innerHTML = ''; // Xóa dòng chữ "Đang quét..."
+
+                // Lọc: Chỉ lấy những file có đuôi .html VÀ không phải là file index.html
+                const cacBaiViet = data.filter(file => file.name.endsWith('.html') && file.name !== 'index.html');
+
+                if(cacBaiViet.length === 0) {
+                    khungChua.innerHTML = '<p class="text-gray-500 text-center">Chưa có bài viết nào được tải lên.</p>';
+                    return;
+                }
+
+                // Vòng lặp: Với mỗi file tìm được, tạo ra 1 nút bấm (link)
+                cacBaiViet.forEach(file => {
+                    // Xóa đuôi .html để tên hiển thị đẹp hơn
+                    let tenHienThi = file.name.replace('.html', '');
+                    
+                    // Giải mã các ký tự tiếng Việt (nếu có khoảng trắng nó sẽ biến thành %20, hàm này sửa lỗi đó)
+                    tenHienThi = decodeURIComponent(tenHienThi); 
+
+                    // Tạo thẻ link <a>
+                    const theLink = document.createElement('a');
+                    theLink.href = file.name; // Link trỏ tới đúng file đó
+                    theLink.className = 'group flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-blue-50 border border-gray-200 hover:border-blue-300 transition-all duration-200 cursor-pointer';
+                    
+                    // Thêm HTML vào bên trong nút bấm
+                    theLink.innerHTML = `
+                        <span class="text-lg font-medium text-gray-700 group-hover:text-blue-600 transition-colors">
+                            📄 ${tenHienThi}
+                        </span>
+                        <span class="text-blue-400 group-hover:translate-x-1 transition-transform">➔</span>
+                    `;
+                    
+                    // Đẩy nút bấm vào khung chứa trên web
+                    khungChua.appendChild(theLink);
+                });
+            })
+            .catch(error => {
+                document.getElementById('danh-sach-bai-viet').innerHTML = 
+                    '<p class="text-red-500 text-center">❌ Lỗi khi tải danh sách. Vui lòng tải lại trang.</p>';
+                console.error('Lỗi lấy dữ liệu:', error);
+            });
+    </script>
+</body>
+</html>
