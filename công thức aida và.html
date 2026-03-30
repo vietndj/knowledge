@@ -3,366 +3,360 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infographic & Flashcards: Kịch Bản Video Quảng Cáo Thực Chiến</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+    <title>Giáo Trình Thực Chiến: Công Thức Video Ngắn Đa Ngành</title>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,600;0,800;1,400&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
     <style>
-        /* ================= BIẾN MÀU SẮC ================= */
+        /* ================= BIẾN HỆ THỐNG MÀU SẮC ================= */
         :root {
-            --bg-body: #0f172a;
-            --bg-card: #1e293b;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
+            --bg-dark: #09090b;
+            --bg-card: #18181b;
+            --text-main: #f4f4f5;
+            --text-dim: #a1a1aa;
             
-            --c-beauty: #ec4899; /* Pink */
-            --c-fashion: #a855f7; /* Purple */
-            --c-home: #06b6d4; /* Cyan */
-            --c-food: #f97316; /* Orange */
-            --c-tech: #3b82f6; /* Blue */
+            --theme-beauty: #ec4899; /* Pink */
+            --theme-fashion: #8b5cf6; /* Purple */
+            --theme-home: #06b6d4; /* Cyan */
+            --theme-food: #f97316; /* Orange */
+            --theme-tech: #3b82f6; /* Blue */
         }
 
-        /* ================= CƠ BẢN ================= */
+        /* ================= RESET & TYPOGRAPHY ================= */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-body);
+            font-family: 'Be Vietnam Pro', sans-serif;
+            background-color: var(--bg-dark);
             color: var(--text-main);
             line-height: 1.6;
-            padding: 40px 20px;
             overflow-x: hidden;
+            padding: 40px 20px;
         }
-        h1, h2, h3 { font-family: 'Montserrat', sans-serif; }
-        .container { max-width: 1100px; margin: 0 auto; }
+        h1, h2, h3, .formula-name { font-family: 'Montserrat', sans-serif; }
+        .container { max-width: 1200px; margin: 0 auto; }
 
         /* ================= HEADER ================= */
-        .header { text-align: center; margin-bottom: 60px; padding: 40px 0; border-bottom: 1px dashed #334155; }
-        .header h1 {
-            font-size: 3rem;
-            text-transform: uppercase;
-            background: linear-gradient(90deg, #38bdf8, #c084fc, #f472b6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 15px;
+        .hero { text-align: center; margin-bottom: 80px; padding-bottom: 40px; border-bottom: 1px solid #27272a; }
+        .hero h1 {
+            font-size: 3.5rem; line-height: 1.2; margin-bottom: 20px;
+            background: linear-gradient(to right, #38bdf8, #818cf8, #e879f9);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
-        .header p { font-size: 1.15rem; color: var(--text-muted); max-width: 800px; margin: 0 auto; }
-
-        /* ================= KHỐI INFOGRAPHIC ================= */
-        .ig-block {
-            display: flex;
-            background: var(--bg-card);
-            border-radius: 24px;
-            margin-bottom: 50px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-            border: 1px solid rgba(255,255,255,0.05);
-            transition: transform 0.3s;
-        }
-        .ig-block:hover { transform: translateY(-5px); }
-        .ig-block.reverse { flex-direction: row-reverse; }
-
-        .ig-art-container {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: rgba(0,0,0,0.2);
-            position: relative;
-            min-height: 350px;
-            overflow: hidden;
+        .hero p { font-size: 1.2rem; color: var(--text-dim); max-width: 800px; margin: 0 auto; }
+        .hero .badge {
+            display: inline-block; padding: 8px 20px; background: rgba(255,255,255,0.1);
+            border-radius: 30px; margin-bottom: 20px; font-weight: 600; letter-spacing: 1px;
         }
 
-        .ig-content { flex: 1.5; padding: 40px; }
-        .formula-tag {
-            display: inline-block; padding: 6px 16px; border-radius: 30px;
-            font-weight: 800; letter-spacing: 1px; margin-bottom: 15px; font-size: 0.9rem; color: #fff;
-        }
-        .ig-content h2 { font-size: 2rem; margin-bottom: 20px; }
+        /* ================= INFOGRAPHIC BLOCKS ================= */
+        .block-wrapper { margin-bottom: 80px; display: flex; gap: 40px; background: var(--bg-card); border-radius: 24px; border: 1px solid #27272a; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); }
+        .block-wrapper:nth-child(even) { flex-direction: row-reverse; }
+
+        /* Left: Art Panel */
+        .art-panel { flex: 0 0 400px; display: flex; justify-content: center; align-items: center; background: #000; position: relative; overflow: hidden; padding: 40px; }
         
-        .step { background: rgba(255,255,255,0.03); padding: 15px; border-radius: 12px; margin-bottom: 15px; border-left: 4px solid; }
-        .step strong { display: block; font-size: 1.1rem; margin-bottom: 5px; }
-        
-        .example-box { margin-top: 25px; padding: 20px; border-radius: 12px; background: rgba(0,0,0,0.3); border: 1px dashed; }
-        .example-box span { font-weight: 800; display: block; margin-bottom: 8px; }
+        /* Right: Content Panel */
+        .content-panel { flex: 1; padding: 50px 40px; display: flex; flex-direction: column; gap: 20px; }
+        .formula-name { font-size: 4rem; line-height: 1; opacity: 0.2; position: absolute; top: 20px; right: 20px; pointer-events: none; }
+        .section-title { font-size: 2.2rem; margin-bottom: 10px; display: flex; align-items: center; gap: 15px; }
+        .tag-pill { padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; font-weight: 800; color: #fff; text-transform: uppercase; letter-spacing: 1px; }
 
-        /* ================= CSS ABSTRACT ART ================= */
-        /* Animation */
-        @keyframes morph { 0%, 100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; } 50% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; } }
-        @keyframes spin { 100% { transform: rotate(360deg); } }
-        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
-        @keyframes sweep { 0% { top: -100px; left: -100px; } 100% { top: 300px; left: 300px; } }
+        .content-box { background: rgba(255,255,255,0.03); border-radius: 16px; padding: 20px; border-left: 4px solid; }
+        .content-box h4 { font-size: 1.1rem; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.5px; opacity: 0.9; }
+        .content-box p, .content-box ul { font-size: 1rem; color: #d4d4d8; }
+        .content-box ul { padding-left: 20px; margin-top: 10px; }
+        .content-box li { margin-bottom: 8px; }
+        
+        /* Cập nhật CSS cho khu vực Ví dụ chứa 5 kịch bản cuộn được */
+        .example-highlight { background: rgba(0,0,0,0.2); padding: 15px; border-radius: 10px; margin-top: 10px; border: 1px dashed rgba(255,255,255,0.2); display: flex; flex-direction: column; gap: 10px; max-height: 280px; overflow-y: auto; }
+        .example-highlight::-webkit-scrollbar { width: 6px; }
+        .example-highlight::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
+        .ex-item { background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px; font-size: 0.95rem; border-left: 3px solid; line-height: 1.5; }
+        .ex-item strong { color: #fff; font-size: 1rem; margin-right: 5px; }
+        .ex-item i { color: #d4d4d8; }
+
+        /* ================= CSS ABSTRACT ART ANIMATIONS ================= */
+        @keyframes morphing { 0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; } 25% { border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%; } 50% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; } 75% { border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%; } 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; } }
+        @keyframes float { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-20px) rotate(5deg); } }
+        @keyframes scanline { 0% { top: -10%; } 100% { top: 110%; } }
+        @keyframes pulse-ring { 0% { transform: scale(0.8); opacity: 0.5; } 100% { transform: scale(1.5); opacity: 0; } }
 
         /* 1. Beauty Art */
-        .art-beauty {
-            width: 180px; height: 180px;
-            background: linear-gradient(135deg, #fbcfe8, var(--c-beauty));
-            animation: morph 6s ease-in-out infinite alternate;
-            box-shadow: 0 0 40px rgba(236,72,153,0.3); position: relative;
-        }
-        .art-beauty::after { content: ''; position: absolute; width: 60px; height: 60px; background: rgba(255,255,255,0.4); border-radius: 50%; top: 20px; right: 20px; }
+        .art-beauty { width: 220px; height: 220px; background: linear-gradient(135deg, #fbcfe8, var(--theme-beauty)); animation: morphing 10s ease-in-out infinite; box-shadow: 0 0 60px rgba(236,72,153,0.4); position: relative; }
+        .art-beauty::before { content: ''; position: absolute; inset: 20px; background: rgba(255,255,255,0.3); animation: morphing 8s ease-in-out infinite reverse; }
 
         /* 2. Fashion Art */
-        .art-fashion {
-            width: 160px; height: 160px;
-            background: conic-gradient(from 90deg, #1e293b, var(--c-fashion), #1e293b);
-            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-            position: relative; animation: pulse 4s infinite;
-        }
-        .art-fashion::before { content: ''; position: absolute; width: 100px; height: 100px; border: 4px solid #fbbf24; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(15deg); }
+        .art-fashion { width: 200px; height: 200px; background: repeating-conic-gradient(from 0deg, var(--theme-fashion) 0deg 30deg, #4c1d95 30deg 60deg); clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); animation: float 6s ease-in-out infinite; position: relative; }
+        .art-fashion::after { content: ''; position: absolute; width: 120px; height: 120px; border: 5px solid #fbbf24; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(45deg); mix-blend-mode: overlay; }
 
         /* 3. Home Care Art */
-        .art-home {
-            width: 170px; height: 170px; border-radius: 50%;
-            background: repeating-radial-gradient(circle, var(--c-home), var(--c-home) 10px, #0891b2 10px, #0891b2 20px);
-            position: relative; overflow: hidden; box-shadow: 0 0 30px rgba(6,182,212,0.4);
-        }
-        .art-home::after { content: ''; position: absolute; width: 300px; height: 40px; background: rgba(255,255,255,0.6); transform: rotate(-45deg); animation: sweep 3s infinite linear; }
+        .art-home { width: 220px; height: 220px; border-radius: 50%; border: 15px solid rgba(6,182,212,0.2); position: relative; overflow: hidden; background: radial-gradient(circle, #0891b2, transparent); }
+        .art-home::before { content: ''; position: absolute; width: 150%; height: 20px; background: rgba(255,255,255,0.8); box-shadow: 0 0 20px #fff; left: -25%; animation: scanline 3s linear infinite; transform: rotate(-15deg); }
 
         /* 4. F&B Art */
-        .art-food {
-            width: 160px; height: 160px; background: var(--c-food);
-            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-            position: relative; animation: spin 20s linear infinite;
-        }
-        .art-food::before { content: ''; position: absolute; width: 80px; height: 80px; background: #ef4444; border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+        .art-food { width: 200px; height: 200px; background: var(--theme-food); position: relative; clip-path: polygon(50% 0%, 80% 10%, 100% 35%, 100% 70%, 80% 90%, 50% 100%, 20% 90%, 0% 70%, 0% 35%, 20% 10%); animation: float 4s ease-in-out infinite reverse; }
+        .art-food::after { content: ''; position: absolute; width: 80px; height: 80px; background: #ef4444; border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%); box-shadow: 0 0 40px #fca5a5; }
 
         /* 5. Tech Art */
-        .art-tech {
-            width: 160px; height: 160px; border: 3px solid var(--c-tech);
-            background: repeating-linear-gradient(0deg, transparent, transparent 15px, rgba(59,130,246,0.2) 15px, rgba(59,130,246,0.2) 30px),
-                        repeating-linear-gradient(90deg, transparent, transparent 15px, rgba(59,130,246,0.2) 15px, rgba(59,130,246,0.2) 30px);
-            position: relative; box-shadow: 0 0 20px rgba(59,130,246,0.5);
-        }
-        .art-tech::after { content: ''; position: absolute; width: 50px; height: 50px; background: #60a5fa; top: 50%; left: 50%; transform: translate(-50%, -50%); box-shadow: 0 0 30px #93c5fd; border-radius: 10px;}
+        .art-tech { width: 200px; height: 200px; background: transparent; border: 4px solid var(--theme-tech); position: relative; }
+        .art-tech::before { content: ''; position: absolute; inset: -20px; border: 2px dashed rgba(59,130,246,0.5); animation: float 10s linear infinite; }
+        .art-tech::after { content: ''; position: absolute; width: 60px; height: 60px; background: var(--theme-tech); top: 50%; left: 50%; transform: translate(-50%, -50%); animation: pulse-ring 2s ease-out infinite; border-radius: 50%; }
 
         /* ================= FLASHCARD SECTION ================= */
-        .fc-section { margin-top: 80px; padding-top: 60px; border-top: 2px dashed #334155; }
-        .fc-header { text-align: center; margin-bottom: 50px; }
-        .fc-header h2 { font-size: 2.5rem; color: #facc15; margin-bottom: 10px; }
-        .fc-header p { color: var(--text-muted); font-style: italic; }
+        .flashcard-header { text-align: center; margin: 100px 0 50px; border-top: 1px dashed #3f3f46; padding-top: 60px; }
+        .flashcard-header h2 { font-size: 3rem; color: #fde047; text-transform: uppercase; }
+        .flashcard-header p { font-size: 1.1rem; color: var(--text-dim); }
 
-        .fc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+        .fc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
         
-        .fc-card {
-            background: var(--bg-card); border-radius: 16px; padding: 25px;
-            border: 1px solid rgba(255,255,255,0.05); display: flex; flex-direction: column;
-            transition: transform 0.3s; box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        .fc-card { background: #18181b; border: 1px solid #27272a; border-radius: 20px; padding: 30px; display: flex; flex-direction: column; transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.5); position: relative; overflow: hidden; }
+        .fc-card:hover { transform: translateY(-5px); border-color: #52525b; box-shadow: 0 15px 40px rgba(0,0,0,0.8); }
+
+        .fc-header-area { display: flex; align-items: flex-start; gap: 15px; margin-bottom: 20px; }
+        .fc-mini-art { width: 40px; height: 40px; flex-shrink: 0; border-radius: 10px; }
+        .fc-q { font-size: 1.15rem; font-weight: 700; color: #fff; line-height: 1.4; }
+
+        /* Đáp án hiển thị luôn, bỏ hiệu ứng Blur */
+        .fc-answer-wrapper { background: rgba(0,0,0,0.2); border-radius: 12px; padding: 15px; margin-top: auto; position: relative; border-left: 3px solid; }
+        
+        .fc-a-text { font-size: 0.95rem; color: #e4e4e7; line-height: 1.5; font-weight: 400; }
+
+        /* Mini Art Colors based on categories */
+        .type-beauty .fc-mini-art { background: linear-gradient(45deg, var(--theme-beauty), #fbcfe8); border-radius: 50%; }
+        .type-beauty .fc-answer-wrapper { border-color: var(--theme-beauty); }
+        .type-fashion .fc-mini-art { background: var(--theme-fashion); clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); }
+        .type-fashion .fc-answer-wrapper { border-color: var(--theme-fashion); }
+        .type-home .fc-mini-art { border: 3px solid var(--theme-home); border-radius: 50%; position: relative; }
+        .type-home .fc-mini-art::after { content:''; position:absolute; width:100%; height:2px; background:var(--theme-home); top:50%; transform:rotate(-45deg); }
+        .type-home .fc-answer-wrapper { border-color: var(--theme-home); }
+        .type-food .fc-mini-art { background: var(--theme-food); border-radius: 8px; transform: rotate(15deg); }
+        .type-food .fc-answer-wrapper { border-color: var(--theme-food); }
+        .type-tech .fc-mini-art { background: repeating-linear-gradient(45deg, transparent, transparent 5px, var(--theme-tech) 5px, var(--theme-tech) 10px); }
+        .type-tech .fc-answer-wrapper { border-color: var(--theme-tech); }
+
+        /* ================= RESPONSIVE ================= */
+        @media (max-width: 992px) {
+            .block-wrapper, .block-wrapper:nth-child(even) { flex-direction: column; }
+            .art-panel { flex: 0 0 250px; }
+            .formula-name { font-size: 3rem; }
         }
-        .fc-card:hover { transform: translateY(-5px); border-color: #38bdf8; }
-
-        /* Mini CSS Art cho Flashcard */
-        .fc-mini-art { width: 45px; height: 45px; margin-bottom: 20px; border-radius: 10px; opacity: 0.9; }
-        .fc-card:nth-child(5n+1) .fc-mini-art { background: linear-gradient(45deg, #ec4899, #fbcfe8); border-radius: 50%; }
-        .fc-card:nth-child(5n+2) .fc-mini-art { background: linear-gradient(135deg, #a855f7, #d8b4fe); clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); }
-        .fc-card:nth-child(5n+3) .fc-mini-art { background: repeating-radial-gradient(circle, #06b6d4, #06b6d4 5px, #0891b2 5px, #0891b2 10px); }
-        .fc-card:nth-child(5n+4) .fc-mini-art { background: linear-gradient(45deg, #f97316, #ef4444); border-radius: 10px; transform: rotate(15deg); }
-        .fc-card:nth-child(5n+5) .fc-mini-art { background: transparent; border: 2px solid #3b82f6; position: relative; }
-        .fc-card:nth-child(5n+5) .fc-mini-art::after { content: ''; position:absolute; inset: 8px; background: #3b82f6; border-radius: 50%; }
-
-        .fc-q { font-weight: 700; font-size: 1.05rem; margin-bottom: 20px; flex-grow: 1; }
-
-        /* Box Đáp Án - Hiệu ứng Blur */
-        .fc-a-box {
-            background: #0b1120; padding: 15px; border-radius: 10px; position: relative;
-            cursor: pointer; overflow: hidden; border-left: 3px solid #38bdf8;
-        }
-        .fc-a-hint {
-            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            color: #64748b; font-size: 0.85rem; font-weight: 700; width: 100%; text-align: center;
-            transition: opacity 0.3s; pointer-events: none; z-index: 2;
-        }
-        .fc-a-text {
-            color: #38bdf8; font-size: 0.95rem; font-weight: 600;
-            filter: blur(6px); opacity: 0.3; transition: all 0.3s ease; user-select: none;
-        }
-
-        /* Tương tác làm nét */
-        .fc-a-box:hover .fc-a-hint, .fc-a-box:active .fc-a-hint { opacity: 0; }
-        .fc-a-box:hover .fc-a-text, .fc-a-box:active .fc-a-text { filter: blur(0); opacity: 1; user-select: auto; }
-
-        /* Responsive */
-        @media (max-width: 900px) {
-            .ig-block, .ig-block.reverse { flex-direction: column; }
-            .ig-art-container { min-height: 250px; border-bottom: 1px solid rgba(255,255,255,0.05); }
-            .header h1 { font-size: 2rem; }
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2.5rem; }
+            .section-title { flex-direction: column; align-items: flex-start; gap: 5px; }
+            .content-panel { padding: 30px 20px; }
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <div class="header">
-        <h1>Bản Đồ Kịch Bản Video Quảng Cáo</h1>
-        <p>Từ bỏ sự lề mề của mô hình AIDA. Nâng cấp giáo trình bằng 5 Công thức "Đánh nhanh thắng nhanh" chuyển đổi cao nhất cho Short-form Video (TikTok/Reels).</p>
+    <div class="hero">
+        <div class="badge">Dành cho Giảng Viên & Học Viên</div>
+        <h1>Hệ Thống Video Ads Đa Ngành</h1>
+        <p>Phân tích chuyên sâu 5 công thức kịch bản chốt sale thần tốc dành cho Short-form Video (TikTok, Reels, Shorts). Từ bỏ sự lề mề, tập trung vào thị giác và cảm xúc!</p>
     </div>
 
-    <div class="ig-block">
-        <div class="ig-art-container"><div class="art-beauty"></div></div>
-        <div class="ig-content">
-            <div class="formula-tag" style="background: var(--c-beauty);">CÔNG THỨC: P.A.S</div>
-            <h2 style="color: var(--c-beauty);">1. Mỹ Phẩm & Skincare</h2>
-            <div class="step" style="border-color: var(--c-beauty);">
-                <strong style="color: var(--c-beauty);">P (Problem - Nỗi đau):</strong> Đập ngay vấn đề vào mắt người xem (da mụn, sần sùi) bằng camera thường ở 3s đầu.
-            </div>
-            <div class="step" style="border-color: var(--c-beauty);">
-                <strong style="color: var(--c-beauty);">A (Agitate - Xoáy sâu):</strong> Làm trầm trọng hóa vấn đề. Bôi kem đắt tiền nhưng trượt đi, không thấm, để lại bết rít gây ức chế.
-            </div>
-            <div class="step" style="border-color: var(--c-beauty);">
-                <strong style="color: var(--c-beauty);">S (Solve - Giải pháp):</strong> Show texture lỏng mịn. Test lên "nửa mặt/tay" để tạo hiệu ứng Before/After trực tiếp trên cùng khung hình.
-            </div>
-            <div class="example-box" style="border-color: var(--c-beauty);">
-                <span style="color: #fbcfe8;">🎬 Kịch bản mẫu AI (Tẩy da chết Body):</span>
-                Gãi móng tay lên da khô mốc xột xoạt (P) ➔ Thoa lotion bị bệt trắng (A) ➔ Đổi sang chà hạt scrub lạo xạo, xả nước sáng bóng (S).
-            </div>
-        </div>
-    </div>
+    <!-- Container chứa Infographic sẽ được Render bằng JS -->
+    <div id="infographic-container"></div>
 
-    <div class="ig-block reverse">
-        <div class="ig-art-container"><div class="art-fashion"></div></div>
-        <div class="ig-content">
-            <div class="formula-tag" style="background: var(--c-fashion);">CÔNG THỨC: B.A.B</div>
-            <h2 style="color: var(--c-fashion);">2. Thời Trang / Local Brand</h2>
-            <div class="step" style="border-color: var(--c-fashion);">
-                <strong style="color: var(--c-fashion);">B (Before - Trước khi dùng):</strong> Dìm hàng bản thân. Mặc đồ lôi thôi, nhàu nhĩ, mồ hôi ướt nách, biểu cảm tự ti.
-            </div>
-            <div class="step" style="border-color: var(--c-fashion);">
-                <strong style="color: var(--c-fashion);">A (After - Lột xác):</strong> Ném áo che camera biến hình. Lên outfit mới phẳng lỳ, đứng form, vuốt tóc thần thái.
-            </div>
-            <div class="step" style="border-color: var(--c-fashion);">
-                <strong style="color: var(--c-fashion);">B (Bridge - Cầu nối):</strong> Góc quay Macro sát bề mặt để khách "sờ vải bằng mắt". Kéo giãn, vò không nhăn để giải thích tính năng.
-            </div>
-            <div class="example-box" style="border-color: var(--c-fashion);">
-                <span style="color: #d8b4fe;">🎬 Kịch bản mẫu AI (Áo thun chống nhăn):</span>
-                Mặc áo cũ nhàu nát nhăn nhó (B) ➔ Chuyển cảnh thành soái ca tự tin (A) ➔ Lấy tay vò áo thành 1 cục, thả ra nảy lại phẳng phiu (B).
-            </div>
-        </div>
+    <!-- Container chứa Flashcards -->
+    <div class="flashcard-header">
+        <h2>🔥 25 Flashcard Ôn Tập Khắc Sâu 🔥</h2>
+        <p>Bộ câu hỏi và đáp án chi tiết giúp giảng viên và học viên ôn tập, ghi nhớ nhanh chóng!</p>
     </div>
-
-    <div class="ig-block">
-        <div class="ig-art-container"><div class="art-home"></div></div>
-        <div class="ig-content">
-            <div class="formula-tag" style="background: var(--c-home); color: #000;">CÔNG THỨC: P.D.B</div>
-            <h2 style="color: var(--c-home);">3. Gia Dụng / Vệ Sinh</h2>
-            <div class="step" style="border-color: var(--c-home);">
-                <strong style="color: var(--c-home);">P (Problem - Ức chế):</strong> Cường điệu hóa vết bẩn tởm lợm. Hì hục chà rửa không ra gây mệt mỏi.
-            </div>
-            <div class="step" style="border-color: var(--c-home);">
-                <strong style="color: var(--c-home);">D (Demo - Trình diễn):</strong> Bắt buộc quay ONE-SHOT không ngắt máy. Xịt bọt, vuốt thẳng 1 đường tạo sự thỏa mãn thị giác (Satisfying).
-            </div>
-            <div class="step" style="border-color: var(--c-home);">
-                <strong style="color: var(--c-home);">B (Benefit - Lợi ích):</strong> Nhấn mạnh việc giải phóng sức lao động, xoa tay trần lên mặt kính chứng minh độ an toàn.
-            </div>
-            <div class="example-box" style="border-color: var(--c-home);">
-                <span style="color: #67e8f9;">🎬 Kịch bản mẫu AI (Xịt bọt nhà bếp):</span>
-                Bôi tương ớt khét lẹt chà không ra (P) ➔ Xịt bọt, lấy khăn vuốt thẳng lộ inox loáng bóng (D) ➔ Xoa tay trần lên bếp, mỉm cười nhàn nhã (B).
-            </div>
-        </div>
-    </div>
-
-    <div class="ig-block reverse">
-        <div class="ig-art-container"><div class="art-food"></div></div>
-        <div class="ig-content">
-            <div class="formula-tag" style="background: var(--c-food);">CÔNG THỨC: H.E.O</div>
-            <h2 style="color: var(--c-food);">4. Đồ Ăn Vặt (F&B)</h2>
-            <div class="step" style="border-color: var(--c-food);">
-                <strong style="color: var(--c-food);">H (Hook - Móc câu thính giác):</strong> Bỏ câu "Xin chào". Thu âm tiếng xé nilon sát mic. Đọc giá giật gân đánh úp cơn bốc đồng.
-            </div>
-            <div class="step" style="border-color: var(--c-food);">
-                <strong style="color: var(--c-food);">E (Experience - Trải nghiệm):</strong> Góc siêu cận tươm mỡ. Dựng Fast-cut (cắt cảnh nhanh) nhai rộp rộp liên tục, nhăn mặt hít hà vì cay.
-            </div>
-            <div class="step" style="border-color: var(--c-food);">
-                <strong style="color: var(--c-food);">O (Offer - Lời chào hàng):</strong> Tạo FOMO (mua nguyên thùng/combo 10 gói giá học sinh đỡ tiền ship).
-            </div>
-            <div class="example-box" style="border-color: var(--c-food);">
-                <span style="color: #fdba74;">🎬 Kịch bản mẫu AI (Bò xé cay):</span>
-                Xé toạc nilon: "Bò cay đẫm vị 9k?" (H) ➔ Xé thớ thịt tơi ra bóng mỡ, cắn ngập răng nhóp nhép (E) ➔ Ôm 10 gói chào combo cày phim đêm (O).
-            </div>
-        </div>
-    </div>
-
-    <div class="ig-block">
-        <div class="ig-art-container"><div class="art-tech"></div></div>
-        <div class="ig-content">
-            <div class="formula-tag" style="background: var(--c-tech);">CÔNG THỨC: P.D.B</div>
-            <h2 style="color: var(--c-tech);">5. Đồ Công Nghệ & Tiện Ích</h2>
-            <div class="step" style="border-color: var(--c-tech);">
-                <strong style="color: var(--c-tech);">P (Problem - Bất tiện):</strong> Khách không muốn nghe thông số. Bày ra sự rườm rà (mớ cáp sạc rối nùi) để đánh vào sự bực mình.
-            </div>
-            <div class="step" style="border-color: var(--c-tech);">
-                <strong style="color: var(--c-tech);">D (Demo - Wow Effect):</strong> Trình diễn thao tác dứt khoát, test tính năng bạo lực (lắc đầu mạnh rơi tai nghe, móc ngàm sạc cắm rẹt).
-            </div>
-            <div class="step" style="border-color: var(--c-tech);">
-                <strong style="color: var(--c-tech);">B (Benefit - Ứng dụng):</strong> Giải quyết vấn đề thực tế, đút vừa túi quần, mang đi du lịch nhẹ tênh.
-            </div>
-            <div class="example-box" style="border-color: var(--c-tech);">
-                <span style="color: #93c5fd;">🎬 Kịch bản mẫu AI (Sạc đa năng):</span>
-                Vứt mớ cáp lỉnh kỉnh lên bàn ngán ngẩm (P) ➔ Gẩy chân cắm 220V cắm thẳng vào tường, kéo cáp ẩn cắm máy "tạch" (D) ➔ Đút túi quần lướt đi (B).
-            </div>
-        </div>
-    </div>
-
-    <div class="fc-section">
-        <div class="fc-header">
-            <h2>🔥 25 FLASHCARD ÔN TẬP TƯ DUY 🔥</h2>
-            <p>Đọc câu hỏi ➔ Tự nhẩm đáp án ➔ Di chuột (hoặc chạm vào) khung đen bên dưới để kiểm tra!</p>
-        </div>
-
-        <div class="fc-grid" id="flashcard-container">
-            </div>
-    </div>
+    <div class="fc-grid" id="flashcard-container"></div>
 </div>
 
 <script>
-    // Data 25 Flashcard
-    const flashcards = [
-        // Chung & Mindset
-        { q: "1. Mô hình AIDA phù hợp nhất với loại video và sản phẩm nào?", a: "Video YouTube dài, Livestream, hoặc bán sản phẩm đắt tiền cần giáo dục thông số kỹ thuật." },
-        { q: "2. Tại sao AIDA không còn tối ưu cho TikTok/Shorts/Reels?", a: "Vì hành vi lướt cực nhanh. Nếu làm lề mề từ Attention -> Action, khách đã lướt qua clip khác." },
-        { q: "3. 'Impulse Buying' trên nền tảng Video ngắn nghĩa là gì?", a: "Mua sắm bốc đồng. Khách chốt đơn lập tức dựa trên cảm xúc và thị giác trong 3-5 giây đầu." },
-        { q: "4. Tư duy biên tập (Editing mindset) quan trọng thế nào?", a: "Biết cách sắp xếp các đoạn clip thô (Raw Footage) sao cho đúng với diễn biến tâm lý mua hàng." },
-        { q: "5. Bài tập '3 Giây Sinh Tử' trên lớp nhằm chữa lỗi sai gì?", a: "Chữa bệnh 'Xin chào các bạn', ép người làm video phải có Hook đập thẳng vào Nỗi đau ngay giây 1." },
-        // Mỹ phẩm
-        { q: "6. Công thức P.A.S là 'vua' của ngành hàng nào?", a: "Mỹ phẩm, Chăm sóc da (Skincare), Thực phẩm chức năng." },
-        { q: "7. P.A.S là viết tắt của 3 chữ gì?", a: "Problem (Vấn đề) - Agitate (Xoáy sâu) - Solve (Giải pháp)." },
-        { q: "8. Chữ A (Agitate) trong kịch bản Skincare thể hiện thế nào?", a: "Làm trầm trọng hóa nỗi đau. VD: Bôi kem đắt tiền nhưng trượt đi, để lại vệt trắng bết rít." },
-        { q: "9. Cú máy bắt buộc (Must-have) khi quay da mụn, sần sùi là gì?", a: "Góc quay Macro (Siêu cận) bằng Camera thường (Tuyệt đối không dùng Filter làm mịn)." },
-        { q: "10. Vì sao phần Demo mỹ phẩm nên thoa lên 'Nửa mặt/tay'?", a: "Để tạo sự tương phản Before/After trực quan, láng mịn ngay trên cùng một khung hình." },
-        // Thời trang
-        { q: "11. B.A.B là công thức 'Quốc dân' của mảng nào?", a: "Thời trang, Local Brand, Quần áo, Makeup biến hình." },
-        { q: "12. B.A.B là viết tắt của các chữ nào?", a: "Before (Trước khi dùng) - After (Sau khi dùng/Lột xác) - Bridge (Cầu nối)." },
-        { q: "13. Bản chất mảng Thời trang không bán vải, họ bán điều gì?", a: "Bán 'Sự tự tin, thần thái, và khao khát lột xác' của người mặc." },
-        { q: "14. Chữ B (Bridge) giúp khách mua online giải quyết rào cản gì?", a: "Giúp khách 'sờ bằng mắt' bằng góc quay siêu cận chất vải, vò không nhăn, chống thấm nước." },
-        // Gia dụng
-        { q: "15. P.D.B dùng cho đồ Gia dụng là viết tắt của?", a: "Problem (Vấn đề) - Demonstration (Trình diễn) - Benefit (Lợi ích)." },
-        { q: "16. Tâm lý 'Satisfying' trong video dọn dẹp nhà cửa là gì?", a: "Sự thỏa mãn thị giác tột độ khi thấy nơi bẩn thỉu nhất bỗng nhiên biến thành sạch bóng kim kít." },
-        { q: "17. Kỹ thuật quay đắt giá nhất ở phần D (Demo) đồ gia dụng là gì?", a: "Quay ONE-SHOT. Cầm máy quay liền mạch không ngắt cảnh, vuốt 1 đường tẩy sạch vết bẩn." },
-        { q: "18. Hành động xoa tay trần lên mặt bếp vừa lau chứng minh điều gì?", a: "Chứng minh phần Benefit: Hóa chất tẩy rửa cực kỳ an toàn, không ăn mòn da tay." },
-        // F&B
-        { q: "19. H.E.O là công thức tàn sát doanh thu của ngành nào?", a: "Ngành F&B, Đồ ăn vặt, Đồ nhậu nửa đêm." },
-        { q: "20. H.E.O là viết tắt của những chữ gì?", a: "Hook ASMR (Móc câu) - Experience (Trải nghiệm) - Offer (Lời chào hàng)." },
-        { q: "21. Vũ khí lớn nhất ở 3 giây đầu của video Đồ ăn vặt là gì?", a: "Âm thanh ASMR. Kề sát micro xé nilon rột rẹt, nhai rộp rộp thu tiếng cực to." },
-        { q: "22. Kỹ thuật Edit 'Fast-cut' trong chữ E (Trải nghiệm) dùng để làm gì?", a: "Cắt cảnh nhanh liên tục giữa việc bóc và nhai để đẩy nhịp độ, ép khách sinh cảm giác thèm thuồng tột độ." },
-        { q: "23. Chữ O (Offer) chốt sale đồ ăn vặt bằng hiệu ứng tâm lý nào?", a: "Hiệu ứng FOMO: Bán combo 10 gói giá học sinh, bán nguyên thùng khổng lồ để tạo cảm giác cực hời phí ship." },
-        // Công nghệ
-        { q: "24. Sai lầm phổ biến nhất khi review đồ Công Nghệ trên nền tảng ngắn?", a: "Dành thời gian đọc bảng thông số khô khan (Pin 10.000mAh, RAM 8GB) thay vì biểu diễn sự tiện lợi." },
-        { q: "25. Cảnh test độ bám của Tai nghe Bluetooth bạo lực và thuyết phục nhất?", a: "Đeo tai nghe vào, bật nhạc và lắc đầu điên cuồng, nhảy tại chỗ để chứng minh không rơi rớt." }
+    // ================= DỮ LIỆU INFOGRAPHIC (5 CÔNG THỨC) =================
+    const formulaData = [
+        {
+            id: 1,
+            title: "Mỹ Phẩm & Skincare",
+            formula: "P.A.S",
+            themeColor: "var(--theme-beauty)",
+            artClass: "art-beauty",
+            content: {
+                definition: "<strong>P (Problem):</strong> Vấn đề/Nỗi đau.<br><strong>A (Agitate):</strong> Xoáy sâu, làm trầm trọng hóa vấn đề.<br><strong>S (Solve):</strong> Giải pháp & Lời kêu gọi hành động.",
+                theory: "Khách hàng mua mỹ phẩm vì họ đang bế tắc với ngoại hình. Họ không cần nghe thành phần hóa học ở giây đầu tiên. Phải đập ngay 'nỗi đau' chân thực nhất vào mắt họ, sau đó tạo sự đồng cảm bực bội, và cuối cùng tung sản phẩm ra như một vị cứu tinh.",
+                example: `
+                    <div class="ex-item" style="border-color: var(--theme-beauty)"><strong>1. Tẩy da chết Body:</strong> <i>Gãi móng tay lên da khô mốc (P) ➔ Bôi kem đắt tiền bị bệt trắng, rít da (A) ➔ Đổi sang chà hạt scrub lạo xạo, xả nước sáng bóng (S).</i></div>
+                    <div class="ex-item" style="border-color: var(--theme-beauty)"><strong>2. Serum trị mụn:</strong> <i>Quay cận cục mụn sưng đỏ tấy (P) ➔ Nặn mụn bằng tay sai cách để lại thâm sẹo (A) ➔ Nhỏ serum dịu da, sáng hôm sau xẹp mụn (S).</i></div>
+                    <div class="ex-item" style="border-color: var(--theme-beauty)"><strong>3. Kem chống nắng:</strong> <i>Da đổ mồ hôi bóng nhẫy bít tắc (P) ➔ Xài KCN cũ bết dính, chảy vệt trắng (A) ➔ Bôi KCN mới ráo mịn, nâng tone tự nhiên (S).</i></div>
+                    <div class="ex-item" style="border-color: var(--theme-beauty)"><strong>4. Dầu gội phủ bạc:</strong> <i>Tóc bạc chân nhìn già nua (P) ➔ Ra tiệm nhuộm xót da đầu, tốn kém (A) ➔ Gội phủ bạc tại nhà 15p, tóc đen nhánh mượt mà (S).</i></div>
+                    <div class="ex-item" style="border-color: var(--theme-beauty)"><strong>5. Son dưỡng trị thâm:</strong> <i>Môi khô nứt nẻ chảy máu (P) ➔ Đánh son màu bị lợn cợn, không tệp môi (A) ➔ Bôi son dưỡng qua đêm căng bóng, đánh son lên chuẩn màu (S).</i></div>
+                `,
+                apply: "<ul><li><strong>Góc máy:</strong> Cực cận (Macro) vào vùng da có khuyết điểm.</li><li><strong>Filter:</strong> Tắt filter làm mịn, bắt buộc dùng camera thường để tăng độ uy tín.</li><li><strong>Kỹ thuật:</strong> Thoa sản phẩm lên 'nửa mặt' hoặc 'nửa cánh tay' để so sánh Before/After trực tiếp trên cùng một khung hình.</li></ul>"
+            }
+        },
+        {
+            id: 2,
+            title: "Thời Trang & Local Brand",
+            formula: "B.A.B",
+            themeColor: "var(--theme-fashion)",
+            artClass: "art-fashion",
+            content: {
+                definition: "<strong>B (Before):</strong> Hiện trạng tồi tệ trước khi dùng.<br><strong>A (After):</strong> Sự lột xác sau khi dùng.<br><strong>B (Bridge):</strong> Cầu nối (Tính năng sản phẩm tạo ra sự lột xác đó).",
+                theory: "Ngành thời trang bán 'sự tự tin' và 'gu thẩm mỹ'. Khách hàng lướt xem vì muốn thấy sự biến hình (Transformation). Thay vì nói áo này đẹp lắm, hãy cho họ thấy nếu không mặc áo này thì họ trông lôi thôi, kém sắc như thế nào.",
+                example: `
+                    <div class="ex-item" style="border-color: var(--theme-fashion)"><strong>1. Áo thun nam:</strong> <i>Mặc áo cũ nhàu nát, nách ướt mồ hôi (B) ➔ Ném áo che camera biến hình soái ca với áo form đứng (A) ➔ Kéo giãn cổ áo vò không nhăn (Bridge).</i></div>
+                    <div class="ex-item" style="border-color: var(--theme-fashion)"><strong>2. Quần Jean hack dáng:</strong> <i>Mặc quần thun lùn tịt lộ bụng mỡ (B) ➔ Búng tay lột xác quần Jean cạp cao chân dài miên man (A) ➔ Quay cận cảnh độ co giãn chun eo (Bridge).</i></div>
+                    <div class="ex-item" style="border-color: var(--theme-fashion)"><strong>3. Áo khoác chống UV:</strong> <i>Trùm kín mít như Ninja nóng nực bức bối (B) ➔ Mặc 1 chiếc áo UV mỏng nhẹ, màu pastel cực xinh (A) ➔ Test hắt nước không ướt, soi đèn UV (Bridge).</i></div>
+                    <div class="ex-item" style="border-color: var(--theme-fashion)"><strong>4. Váy body đi tiệc:</strong> <i>Đồ ngủ lôi thôi, đầu bù tóc rối (B) ➔ Lột xác lộng lẫy với váy body ôm sát đường cong (A) ➔ Zoom siêu cận đường may tàng hình, không lộ viền (Bridge).</i></div>
+                    <div class="ex-item" style="border-color: var(--theme-fashion)"><strong>5. Giày Sneaker độn đế:</strong> <i>Mang dép lê đứng thấp hơn bạn gái (B) ➔ Dậm chân biến hình mang Sneaker ngầu, cao thêm 5cm (A) ➔ Bẻ gập đế giày làm đôi chứng minh độ êm (Bridge).</i></div>
+                `,
+                apply: "<ul><li><strong>Chuyển cảnh:</strong> Dùng kỹ thuật che ống kính (Transition) để biến hình nhanh.</li><li><strong>Âm nhạc:</strong> Nhạc beat mạnh, drop đúng lúc biến hình.</li><li><strong>Chữ Bridge (Cầu nối):</strong> Phải quay siêu cận chất vải để khách 'sờ vải bằng mắt' (test độ co giãn, test trượt nước).</li></ul>"
+            }
+        },
+        {
+            id: 3,
+            title: "Gia Dụng & Vệ Sinh",
+            formula: "P.D.B",
+            themeColor: "var(--theme-home)",
+            artClass: "art-home",
+            content: {
+                definition: "<strong>P (Problem):</strong> Vấn đề (Vết bẩn, sự bừa bộn).<br><strong>D (Demonstration):</strong> Trình diễn tính năng thực tế.<br><strong>B (Benefit):</strong> Lợi ích cốt lõi (Thời gian, an toàn).",
+                theory: "Video gia dụng đánh vào sự 'Thỏa mãn thị giác' (Satisfying). Con người có xu hướng thích xem những thứ bẩn thỉu được dọn sạch bong. Việc trình diễn trực quan (Demo) mang tính quyết định 90% khả năng chốt đơn mà không cần lồng tiếng nhiều.",
+                example: `
+                    <div class="ex-item" style="border-color: var(--theme-home)"><strong>1. Xịt bọt nhà bếp:</strong> <i>Bôi mỡ khét lẹt lên bếp chà không ra (P) ➔ Xịt bọt tuyết trắng, vuốt 1 đường lộ inox bóng loáng (D) ➔ Xoa tay trần lên bếp an toàn (B).</i></div>
+                    <div class="ex-item" style="border-color: var(--theme-home)"><strong>2. Cây lăn bụi quần áo:</strong> <i>Áo len đen dính đầy lông mèo phát rồ (P) ➔ Lăn 1 đường duy nhất sạch bong lông (D) ➔ Bóc màng bẩn vứt đi một cách nhàn nhã (B).</i></div>
+                    <div class="ex-item" style="border-color: var(--theme-home)"><strong>3. Tẩy ố bồn cầu:</strong> <i>Bồn cầu ố vàng lâu năm chà mỏi tay (P) ➔ Đổ bọt sủi xanh, để 5p rồi bấm xả nước, vết bẩn trôi tuột (D) ➔ Không mùi hắc, nhàn tênh (B).</i></div>
+                    <div class="ex-item" style="border-color: var(--theme-home)"><strong>4. Chổi lau nhà tự vắt:</strong> <i>Cầm giẻ lau vắt bằng tay bẩn thỉu, đau lưng (P) ➔ Kéo cây lau tự vắt, luồn lách dễ dàng xuống gầm tủ (D) ➔ Sàn khô nhanh, tay sạch sẽ (B).</i></div>
+                    <div class="ex-item" style="border-color: var(--theme-home)"><strong>5. Viên giặt 3 in 1:</strong> <i>Đong nước giặt lỉnh kỉnh, đổ tràn dính tay (P) ➔ Vứt đúng 1 viên nhỏ xíu vào máy cùng núi quần áo (D) ➔ Lấy ra thơm phức, đánh bay vết bẩn (B).</i></div>
+                `,
+                apply: "<ul><li><strong>Cường điệu:</strong> Vết bẩn trong clip phải tởm và khó làm sạch hơn thực tế gấp 3 lần.</li><li><strong>Nguyên tắc One-Shot:</strong> Phân cảnh Demo (lau/chà) BẮT BUỘC quay liền mạch, không cắt ghép để chứng minh không dùng thủ thuật.</li></ul>"
+            }
+        },
+        {
+            id: 4,
+            title: "Đồ Ăn Vặt (F&B)",
+            formula: "H.E.O",
+            themeColor: "var(--theme-food)",
+            artClass: "art-food",
+            content: {
+                definition: "<strong>H (Hook ASMR):</strong> Móc câu bằng âm thanh/giá sốc.<br><strong>E (Experience):</strong> Trải nghiệm ăn uống dồn dập.<br><strong>O (Offer):</strong> Lời chào hàng không thể chối từ.",
+                theory: "Hành vi mua đồ ăn vặt là bốc đồng (Impulse buying) sinh ra từ cơn thèm (Craving). Video F&B không cần logic, chỉ cần đánh mạnh vào thính giác (âm thanh nhai) và thị giác (màu sắc rực rỡ) để kích thích tuyến nước bọt của người xem.",
+                example: `
+                    <div class="ex-item" style="border-color: var(--theme-food)"><strong>1. Bò xé cay:</strong> <i>Kề sát mic xé nilon rột rẹt: 'Bò thật chỉ 9k?' (H) ➔ Xé tơi thớ thịt bóng dầu, nhai rộp rộp toát mồ hôi (E) ➔ Ôm 10 gói chốt combo cày phim đêm (O).</i></div>
+                    <div class="ex-item" style="border-color: var(--theme-food)"><strong>2. Snack da cá trứng muối:</strong> <i>Bóp nát miếng da cá rôm rốp sát mic (H) ➔ Chấm đẫm sốt phô mai chảy, đưa vào miệng biểu cảm phê pha (E) ➔ Chốt Mua 3 Tặng 1 freeship (O).</i></div>
+                    <div class="ex-item" style="border-color: var(--theme-food)"><strong>3. Trà sữa tự pha:</strong> <i>Tiếng đá leng keng: 'Trà sữa tự pha rẻ hơn lề đường?' (H) ➔ Đổ nước sôi sủi bọt, cắn trân châu sần sật bằng mic ASMR (E) ➔ Chốt lốc 5 cốc giá hủy diệt (O).</i></div>
+                    <div class="ex-item" style="border-color: var(--theme-food)"><strong>4. Chân gà sả ớt:</strong> <i>Tiếng bẻ khớp chân gà rắc rắc ứa nước chấm (H) ➔ Góc cận cắn miếng sụn giòn sần sật, hít hà vì ớt cay (E) ➔ Chốt túi to 500g ăn tẹt ga (O).</i></div>
+                    <div class="ex-item" style="border-color: var(--theme-food)"><strong>5. Kẹo dẻo lột vỏ:</strong> <i>Tiếng lột vỏ nilon kẹo dai dai như bóc vỏ trái cây thật (H) ➔ Cắn nhân chảy mật trào ra, nhai dẻo dẻo dính răng (E) ➔ Chốt mua nguyên hộp Mix vị (O).</i></div>
+                `,
+                apply: "<ul><li><strong>Âm thanh là Vua:</strong> Thu âm tiếng xé bao bì, rót nước, nhai lạo xạo... âm lượng lớn hơn bình thường 20%.</li><li><strong>Nhịp điệu:</strong> Dùng kỹ thuật Fast-cut (cắt cảnh nhanh) liên tục nhai và nuốt để tạo sự dồn dập.</li><li><strong>Màu sắc:</strong> Chỉnh màu vàng/đỏ (Warm tone) để đồ ăn trông bắt mắt hơn.</li></ul>"
+            }
+        },
+        {
+            id: 5,
+            title: "Công Nghệ & Tiện Ích",
+            formula: "P.D.B",
+            themeColor: "var(--theme-tech)",
+            artClass: "art-tech",
+            content: {
+                definition: "<strong>P (Problem):</strong> Sự phiền toái của thiết bị cũ.<br><strong>D (Demo):</strong> Trình diễn tính năng Wow-effect của thiết bị mới.<br><strong>B (Benefit):</strong> Lợi ích thực dụng hàng ngày.",
+                theory: "Khách hàng trên TikTok không có kiên nhẫn nghe đọc thông số RAM, Chip, Dung lượng Pin. Họ mua công nghệ để giải quyết một sự 'Bất tiện' nhỏ nhặt trong đời sống. Hãy cho họ thấy tính năng giải quyết bất tiện đó nhanh như thế nào.",
+                example: `
+                    <div class="ex-item" style="border-color: var(--theme-tech)"><strong>1. Sạc dự phòng đa năng:</strong> <i>Lôi mớ cáp rối và củ sạc to nặng trong balo (P) ➔ Gẩy ngàm cắm điện giấu kín, kéo dây tích hợp cắm tạch vào điện thoại (D) ➔ Đút gọn túi quần lướt đi (B).</i></div>
+                    <div class="ex-item" style="border-color: var(--theme-tech)"><strong>2. Tai nghe nắp trượt:</strong> <i>Tai nghe cũ khó mở 1 tay (P) ➔ Trượt nắp 'cạch cạch' Zippo xả stress, lắc đầu điên cuồng khi đeo không rớt (D) ➔ Chốt thiết kế lộ mạch hầm hố (B).</i></div>
+                    <div class="ex-item" style="border-color: var(--theme-tech)"><strong>3. Giá đỡ điện thoại từ tính:</strong> <i>Vừa ăn vừa cầm điện thoại mỏi tay, rớt ụp vào bát (P) ➔ Đưa lưng máy vào giá đỡ hít 'bụp' cực chặt, xoay 360 độ (D) ➔ Gập gọn nhét túi mang cafe (B).</i></div>
+                    <div class="ex-item" style="border-color: var(--theme-tech)"><strong>4. Quạt mini đeo cổ:</strong> <i>Đi dạo ngoài nắng túa mồ hôi, 1 tay phải cầm quạt mỏi (P) ➔ Quàng quạt lên cổ, luồng gió thổi tung tóc, tay bấm điện thoại (D) ➔ Không kẹt tóc, mát lạnh (B).</i></div>
+                    <div class="ex-item" style="border-color: var(--theme-tech)"><strong>5. Bàn phím cơ mini:</strong> <i>Gõ phím laptop lạch cạch khô khan chán phèo (P) ➔ Chuyển qua phím cơ âm thanh gõ lốp bốp đã tai, đèn LED RGB nhấp nháy theo nhạc (D) ➔ Setup góc làm việc cực chill (B).</i></div>
+                `,
+                apply: "<ul><li><strong>Hạn chế Voice:</strong> Thay vì lồng tiếng đọc thông số, hãy chèn Text Pop-up trên màn hình (Ví dụ: 'Sạc đầy 50% trong 30p').</li><li><strong>Action (Hành động):</strong> Cầm nắm sản phẩm dứt khoát. Nhấn mạnh vào các chi tiết cơ học (tiếng đóng nắp nảy, tiếng gập chân sạc).</li></ul>"
+            }
+        }
     ];
 
-    const container = document.getElementById('flashcard-container');
-    let htmlStr = '';
+    // Render Infographic Blocks
+    const infoContainer = document.getElementById('infographic-container');
+    let infoHTML = '';
+    formulaData.forEach((item, index) => {
+        infoHTML += `
+        <div class="block-wrapper">
+            <div class="art-panel">
+                <div class="${item.artClass}"></div>
+                <div class="formula-name" style="color: ${item.themeColor}">${item.formula}</div>
+            </div>
+            <div class="content-panel">
+                <h2 class="section-title">
+                    <span class="tag-pill" style="background: ${item.themeColor}">${item.formula}</span>
+                    <span style="color: ${item.themeColor}">${item.title}</span>
+                </h2>
+                
+                <div class="content-box" style="border-color: ${item.themeColor}">
+                    <h4 style="color: ${item.themeColor}">1. Định nghĩa</h4>
+                    <p>${item.content.definition}</p>
+                </div>
+                
+                <div class="content-box" style="border-color: ${item.themeColor}">
+                    <h4 style="color: ${item.themeColor}">2. Lý thuyết Tâm lý</h4>
+                    <p>${item.content.theory}</p>
+                </div>
 
-    flashcards.forEach((item) => {
-        htmlStr += `
-            <div class="fc-card">
-                <div class="fc-mini-art"></div>
-                <div class="fc-q">${item.q}</div>
-                <div class="fc-a-box">
-                    <div class="fc-a-hint">Di chuột / Chạm để xem</div>
+                <div class="content-box" style="border-color: ${item.themeColor}">
+                    <h4 style="color: ${item.themeColor}">3. Ví dụ Kịch bản chuẩn</h4>
+                    <div class="example-highlight">${item.content.example}</div>
+                </div>
+
+                <div class="content-box" style="border-color: ${item.themeColor}">
+                    <h4 style="color: ${item.themeColor}">4. Điểm nhấn Thực hành</h4>
+                    ${item.content.apply}
+                </div>
+            </div>
+        </div>
+        `;
+    });
+    infoContainer.innerHTML = infoHTML;
+
+
+    // ================= DỮ LIỆU FLASHCARD (25 CÂU) =================
+    const flashcardData = [
+        { type: 'beauty', q: "1. Tại sao công thức AIDA không hiệu quả cho TikTok/Reels?", a: "Vì hành vi người xem lướt rất nhanh (3-5s). AIDA đi từ tốn qua các bước, dễ khiến khách hàng mất kiên nhẫn và lướt qua clip khác." },
+        { type: 'fashion', q: "2. 'Impulse Buying' trên nền tảng Video ngắn là gì?", a: "Là Mua sắm bốc đồng. Khách hàng chốt đơn lập tức dựa trên cảm xúc và thị giác bị kích thích, không thông qua suy nghĩ logic." },
+        { type: 'home', q: "3. Trong lớp học, bài tập '3 Giây Sinh Tử' dùng để sửa lỗi gì?", a: "Sửa thói quen mở bài bằng 'Xin chào các bạn...', ép học viên phải có Hook đập thẳng vào Nỗi đau/Vấn đề ngay giây đầu tiên." },
+        { type: 'tech', q: "4. Tư duy biên tập (Editing mindset) quan trọng thế nào?", a: "Giúp người dựng hiểu rằng: Sắp xếp các đoạn clip thô (Raw) phải khớp đúng với hành trình tâm lý mua hàng, không chỉ là ghép hình cho đẹp." },
+        { type: 'food', q: "5. Vì sao không nên dựng sẵn video cho học viên mà nên đưa Source thô?", a: "Để học viên tự tay lọc lỗi, sắp xếp trật tự các cảnh quay (Ví dụ: kéo cảnh P lên trước cảnh S), từ đó hiểu sâu bản chất công thức." },
+        
+        { type: 'beauty', q: "6. P.A.S là viết tắt của 3 chữ gì trong làm kịch bản?", a: "Problem (Vấn đề) - Agitate (Xoáy sâu nỗi đau) - Solve (Giải pháp/Chốt sale)." },
+        { type: 'beauty', q: "7. Chữ A (Agitate) trong kịch bản Skincare thể hiện thế nào?", a: "Làm trầm trọng nỗi đau. Ví dụ: Bôi kem lên da mốc nhưng kem bị bệt trắng, bết rít, tạo biểu cảm bực bội trên mặt người review." },
+        { type: 'beauty', q: "8. Vì sao phải quay test mỹ phẩm lên 'Nửa mặt/Nửa tay'?", a: "Để tạo sự tương phản Before/After trực tiếp trên cùng một khung hình, khách hàng dễ dàng so sánh hiệu quả láng mịn/nâng tone." },
+        { type: 'beauty', q: "9. Lỗi sai nghiêm trọng nhất khi quay Review giảm mụn/trắng da?", a: "Sử dụng Filter (bộ lọc làm mịn) của app. Phải dùng Camera thường quay góc Macro để thấy khuyết điểm thật, tăng độ uy tín." },
+        
+        { type: 'fashion', q: "10. B.A.B là công thức 'Quốc dân' của mảng nào?", a: "Mảng Thời trang, Quần áo (Local Brand), hoặc các video Makeup biến hình." },
+        { type: 'fashion', q: "11. Bản chất ngành Thời trang không bán mảnh vải, họ bán điều gì?", a: "Họ bán 'Sự tự tin, thần thái' và 'Khao khát được lột xác' của người mặc." },
+        { type: 'fashion', q: "12. Chữ B (Bridge - Cầu nối) giúp khách mua online giải quyết rào cản gì?", a: "Mua online không sờ được vải. Bridge dùng góc quay siêu cận, vò kéo vải, xịt nước... để khách 'Sờ bằng mắt', chứng minh tính năng." },
+        
+        { type: 'home', q: "13. P.D.B dùng cho đồ Gia dụng là viết tắt của?", a: "Problem (Vấn đề ức chế) - Demonstration (Trình diễn trực quan) - Benefit (Lợi ích giải phóng sức lao động)." },
+        { type: 'home', q: "14. Cảm giác 'Satisfying' trong video dọn dẹp nhà cửa là gì?", a: "Sự thỏa mãn thị giác tột độ khi xem người khác làm sạch một bề mặt cực kỳ bẩn thỉu trong tích tắc." },
+        { type: 'home', q: "15. Nguyên tắc 'One-Shot' ở phần Demo (Trình diễn) nghĩa là gì?", a: "Cầm máy quay liền mạch KHÔNG ngắt cảnh/chuyển cảnh lúc lau vết bẩn, nhằm chứng minh sản phẩm hiệu quả thật, không cắt ghép lừa đảo." },
+        { type: 'home', q: "16. Hành động lấy tay trần xoa lên mặt bếp vừa tẩy rửa chứng minh điều gì?", a: "Chứng minh chữ B (Benefit): Hóa chất làm sạch rất mạnh nhưng an toàn, không ăn mòn hay hại da tay người dùng." },
+        
+        { type: 'food', q: "17. H.E.O là viết tắt của những chữ gì trong mảng Đồ ăn vặt?", a: "Hook ASMR (Móc câu âm thanh) - Experience (Trải nghiệm dồn dập) - Offer (Lời chào hàng FOMO)." },
+        { type: 'food', q: "18. Vũ khí mạnh nhất ở 3 giây đầu của video F&B là gì?", a: "Âm thanh ASMR. Ví dụ: Kề sát điện thoại thu âm cực to tiếng xé nilon rột rẹt, tiếng cắn giòn rụm để kích thích thính giác ngay lập tức." },
+        { type: 'food', q: "19. Kỹ thuật Edit 'Fast-cut' trong chữ E (Trải nghiệm) có tác dụng gì?", a: "Cắt ghép các cảnh nhai, nuốt liên tục với nhịp độ siêu nhanh để ép người xem sinh ra cảm giác thèm thuồng tột độ (Craving)." },
+        { type: 'food', q: "20. Lời chào hàng (Offer) chốt sale đồ ăn vặt thường dùng hiệu ứng gì?", a: "Hiệu ứng FOMO (Sợ bỏ lỡ). Đẩy combo 5-10 gói giá học sinh, hoặc mua nguyên thùng để tạo cảm giác cực kỳ hời và bõ tiền Ship." },
+        
+        { type: 'tech', q: "21. Sai lầm phổ biến nhất khi quay review đồ Công Nghệ/Tiện ích ngắn?", a: "Lãng phí thời gian đọc bảng thông số kỹ thuật khô khan (Chip gì, Pin bao nhiêu mAh) thay vì biểu diễn sự tiện lợi vào đời sống." },
+        { type: 'tech', q: "22. Trong kịch bản P.D.B công nghệ, chữ P (Problem) thường là gì?", a: "Là sự 'Bất tiện, rườm rà' của thiết bị cũ. Ví dụ: Dây cáp rối nùi, củ sạc to nặng chiếm diện tích balo." },
+        { type: 'tech', q: "23. Cảnh test Tai nghe Bluetooth bạo lực và thuyết phục nhất là?", a: "Trượt nắp kết nối 1s. Đeo vào tai rồi bật nhạc, lắc đầu điên cuồng, nhảy tại chỗ để chứng minh độ bám, không rơi rớt khi thể thao." },
+        { type: 'tech', q: "24. Thay vì đọc thông số, người dựng video nên làm gì?", a: "Chèn Text Pop-up trên màn hình (Ví dụ chữ: Sạc 50% / 30 Phút hiện lên rõ ràng) để não bộ khách hàng tự tiếp thu bằng mắt." },
+        { type: 'fashion', q: "25. Tổng kết: Yếu tố quan trọng nhất của mọi video quảng cáo ngắn là?", a: "Chữ HOOK (3 giây đầu tiên). Phải có hình ảnh, hành động hoặc âm thanh đập tan sự xao nhãng để giữ tay người xem ngừng lướt." }
+    ];
+
+    const fcContainer = document.getElementById('flashcard-container');
+    let fcHTML = '';
+    flashcardData.forEach((item) => {
+        fcHTML += `
+            <div class="fc-card type-${item.type}">
+                <div class="fc-header-area">
+                    <div class="fc-mini-art"></div>
+                    <div class="fc-q">${item.q}</div>
+                </div>
+                <div class="fc-answer-wrapper">
                     <div class="fc-a-text">${item.a}</div>
                 </div>
             </div>
         `;
     });
-    
-    container.innerHTML = htmlStr;
+    fcContainer.innerHTML = fcHTML;
 </script>
 
 </body>
